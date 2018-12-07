@@ -1,20 +1,17 @@
 use std::{
-    env,
     str::FromStr,
-    fs::File,
-    vec::Vec,
     io::BufRead
 };
 
-fn get_increments(input_file: &str) -> Result<Vec<i32>, std::io::Error> {
-    let input = match File::open(input_file) {
+fn get_increments(input_file: &str) -> Result<std::vec::Vec<i32>, std::io::Error> {
+    let input = match std::fs::File::open(input_file) {
         Ok(v) => v,
         Err(e) => return Err(e)
     };
 
     let buffered = std::io::BufReader::new(input);
 
-    let mut increments: Vec<i32> = Vec::new();
+    let mut increments: std::vec::Vec<i32> = std::vec::Vec::new();
 
     for line in buffered.lines() {
         let line_str = &line.unwrap();
@@ -25,13 +22,13 @@ fn get_increments(input_file: &str) -> Result<Vec<i32>, std::io::Error> {
     Ok(increments)
 }
 
-fn get_frequency(increments: &Vec<i32>) -> i32 {
+fn get_frequency(increments: &std::vec::Vec<i32>) -> i32 {
     increments.into_iter().sum::<i32>()
 }
 
-fn get_repeated_frequency(increments: &Vec<i32>) -> i32 {
+fn get_repeated_frequency(increments: &std::vec::Vec<i32>) -> i32 {
     
-    let mut frequencies: Vec<i32> = vec![0];
+    let mut frequencies: std::vec::Vec<i32> = vec![0];
     let mut frequency: i32 = 0;
     
     'outer: loop {
@@ -51,7 +48,7 @@ fn get_repeated_frequency(increments: &Vec<i32>) -> i32 {
 }
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
+    let args: std::vec::Vec<String> = std::env::args().collect();
 
     match args.len() {
         1 => {
@@ -74,7 +71,7 @@ fn main() {
             let repeated_frequency = get_repeated_frequency(&increments);
             println!("The first frequency my device reaches twice is {}", repeated_frequency);            
         },
-        
+
         _ => {
             println!("Please supply just 1 parameter: input file");
         }
