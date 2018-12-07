@@ -2,7 +2,7 @@
 
 Attempts to solve [Advent of Code 2018](https://adventofcode.com/2018) challenge using the [Rust lang](https://www.rust-lang.org/).
 
-The code expects the latest Rust from stable channel.
+The code expects the Rust 2018 from stable channel.
 
 ## Structure of the repo
 Each day has its own cargo project in a folder named `day_??`.
