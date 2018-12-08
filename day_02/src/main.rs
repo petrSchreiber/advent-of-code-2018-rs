@@ -24,7 +24,7 @@ fn main() {
             println!("The resulting checksum is {}", checksum);
 
             let common = part02::get_common_chars(&ids);
-            println!("The common letter between the two IDs are {}", common);
+            println!("The common letters between the two IDs are {}", common);
 
         },
 
